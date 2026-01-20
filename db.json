@@ -1,0 +1,131 @@
+{
+  "properties": [
+    {
+      "id": "1",
+      "name": "Earthy Escape"
+    },
+    {
+      "id": "2",
+      "name": "Millennium Farm"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1",
+      "propertyId": 2,
+      "type": "income",
+      "category": "Bookings",
+      "amount": 12000,
+      "date": "2026-03-05",
+      "description": "March bookings"
+    },
+    {
+      "id": "2",
+      "propertyId": 2,
+      "type": "expense",
+      "category": "Staff Salary",
+      "amount": 3000,
+      "date": "2026-03-10",
+      "description": "March salaries"
+    },
+    {
+      "id": "3",
+      "propertyId": 2,
+      "type": "expense",
+      "category": "Maintenance",
+      "amount": 1500,
+      "date": "2026-03-15",
+      "description": "Electrical repairs"
+    },
+    {
+      "id": "5",
+      "propertyId": 1,
+      "type": "expense",
+      "category": "Utilities",
+      "amount": 1800,
+      "date": "2026-03-11",
+      "description": "Electricity + Water"
+    },
+    {
+      "id": "6",
+      "propertyId": 1,
+      "type": "expense",
+      "category": "Marketing",
+      "amount": 1200,
+      "date": "2026-03-20",
+      "description": "Instagram ads"
+    },
+    {
+      "id": "7",
+      "propertyId": 2,
+      "type": "income",
+      "category": "Events",
+      "amount": 6000,
+      "date": "2026-01-18",
+      "description": "Corporate event"
+    },
+    {
+      "id": "8",
+      "propertyId": 2,
+      "type": "expense",
+      "category": "Utilities",
+      "amount": 1100,
+      "date": "2026-01-22",
+      "description": "Power backup fuel"
+    },
+    {
+      "id": "9",
+      "propertyId": 1,
+      "type": "income",
+      "category": "Events",
+      "amount": 4000,
+      "date": "2026-02-14",
+      "description": "Wedding booking"
+    },
+    {
+      "id": "10",
+      "propertyId": 1,
+      "type": "expense",
+      "category": "Staff Salary",
+      "amount": 2500,
+      "date": "2026-02-28",
+      "description": "February payroll"
+    },
+    {
+      "id": "70b6",
+      "propertyId": 2,
+      "type": "expense",
+      "category": "bookings",
+      "amount": 1222,
+      "date": "2026-01-20",
+      "description": ""
+    },
+    {
+      "id": "11c2",
+      "propertyId": 1,
+      "type": "expense",
+      "category": "food",
+      "amount": 100,
+      "date": "2026-01-08",
+      "description": ""
+    },
+    {
+      "id": "4e02",
+      "propertyId": 2,
+      "type": "income",
+      "category": "food",
+      "amount": 12222,
+      "date": "2026-01-20",
+      "description": ""
+    },
+    {
+      "id": "9dbd",
+      "propertyId": 1,
+      "type": "income",
+      "category": "cab",
+      "amount": 1200,
+      "date": "2026-01-20",
+      "description": ""
+    }
+  ]
+}

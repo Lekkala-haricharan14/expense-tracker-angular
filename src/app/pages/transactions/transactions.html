@@ -1,0 +1,71 @@
+<h2>Add Transaction</h2>
+
+<div class="form">
+
+  <select [(ngModel)]="type">
+    <option value="income">Income</option>
+    <option value="expense">Expense</option>
+  </select>
+
+  <!-- ✅ SHOW PROPERTY DROPDOWN ONLY FOR "ALL PROPERTIES" -->
+  <select
+    *ngIf="propertyStore.propertyId() === 0"
+    [ngModel]="selectedPropertyId()"
+    (ngModelChange)="selectedPropertyId.set($event)">
+
+    <option [ngValue]="0" disabled>Select Property</option>
+    <option [ngValue]="1">Earthy Escape</option>
+    <option [ngValue]="2">Millennium Farm</option>
+  </select>
+
+  <input
+    type="text"
+    placeholder="Category"
+    [(ngModel)]="category" />
+
+  <input
+    type="number"
+    placeholder="Amount"
+    [(ngModel)]="amount" />
+
+  <input
+    type="date"
+    [(ngModel)]="date" />
+
+  <button (click)="add()">Add</button>
+</div>
+
+<h2>Transactions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Property</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let t of transactions()">
+      <td>{{ t.type }}</td>
+      <td>
+        {{ t.propertyId === 1 ? 'Earthy Escape' : 'Millennium Farm' }}
+      </td>
+      <td>{{ t.category }}</td>
+      <td>₹{{ t.amount }}</td>
+      <td>{{ t.date }}</td>
+      <td>
+        <button
+  *ngIf="t.id !== undefined"
+  (click)="remove(t.id)">
+  ✕
+</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>

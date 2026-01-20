@@ -1,0 +1,82 @@
+<h1>Financial Reports</h1>
+<p class="subtitle">Detailed analysis & comparisons</p>
+
+<!-- ========================= -->
+<!-- PROPERTY COMPARISON -->
+<!-- ========================= -->
+<section>
+  <h3>Property Comparison</h3>
+
+  <table>
+    <tr>
+      <th>Property</th>
+      <th>Income</th>
+      <th>Expenses</th>
+      <th>Profit</th>
+    </tr>
+
+    <tr>
+      <td>Earthy Escape</td>
+      <td>₹{{ propertySummary().earthy.income }}</td>
+      <td>₹{{ propertySummary().earthy.expense }}</td>
+      <td>
+        ₹{{ propertySummary().earthy.income - propertySummary().earthy.expense }}
+      </td>
+    </tr>
+
+    <tr>
+      <td>Millennium Farm</td>
+      <td>₹{{ propertySummary().millennium.income }}</td>
+      <td>₹{{ propertySummary().millennium.expense }}</td>
+      <td>
+        ₹{{ propertySummary().millennium.income - propertySummary().millennium.expense }}
+      </td>
+    </tr>
+  </table>
+</section>
+
+<!-- ========================= -->
+<!-- CATEGORY-WISE EXPENSE -->
+<!-- ========================= -->
+<section>
+  <h3>Expense by Category</h3>
+
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Total Expense</th>
+    </tr>
+
+    <tr *ngFor="let c of expenseByCategory()">
+      <td>{{ c[0] }}</td>
+      <td>₹{{ c[1] }}</td>
+    </tr>
+  </table>
+</section>
+
+
+<!-- ========================= -->
+<!-- INCOME BY CATEGORY -->
+<!-- ========================= -->
+<section>
+  <h3>Income by Category</h3>
+
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Total Income</th>
+    </tr>
+
+    <tr *ngFor="let c of incomeByCategory()">
+      <td>{{ c[0] }}</td>
+      <td>₹{{ c[1] }}</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ========================= -->
+<!-- EXPORT -->
+<!-- ========================= -->
+<button class="export" (click)="exportCSV()">
+  Export CSV
+</button>

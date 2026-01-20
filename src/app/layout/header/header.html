@@ -1,0 +1,33 @@
+<header class="app-header">
+  <div class="left">
+    <h1>XYZ Financial Ledger</h1>
+  </div>
+
+  <div class="right controls">
+    <select class="property" (change)="changeProperty($event)">
+      <option value="0">All Properties</option>
+      <option value="1">Earthy Escape</option>
+      <option value="2">Millennium Farm</option>
+    </select>
+
+    <div class="cycle">
+      <button
+        [class.active]="store.cycle() === 'monthly'"
+        (click)="setCycle('monthly')">
+        Monthly
+      </button>
+
+      <button
+        [class.active]="store.cycle() === 'quarterly'"
+        (click)="setCycle('quarterly')">
+        Quarterly
+      </button>
+
+      <button
+        [class.active]="store.cycle() === 'yearly'"
+        (click)="setCycle('yearly')">
+        Yearly
+      </button>
+    </div>
+  </div>
+</header>

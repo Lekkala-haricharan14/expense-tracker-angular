@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background: #f8fafc;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Main content */
+.app-content {
+  flex: 1;
+  padding: 16px;
+  overflow-x: hidden;
+}

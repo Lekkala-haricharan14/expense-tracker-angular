@@ -1,0 +1,102 @@
+.app-header {
+  height: 64px;
+  padding: 0 28px;
+  background: linear-gradient(90deg, #020617, #0f172a);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #1e293b;
+}
+
+/* LEFT */
+.app-header h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* RIGHT CONTROLS */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* PROPERTY SELECT */
+.property {
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid #334155;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+.property:hover {
+  border-color: #6366f1;
+}
+
+/* CYCLE BUTTON GROUP */
+.cycle {
+  display: flex;
+  gap: 6px;
+  background: #020617;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid #334155;
+}
+
+/* BUTTONS */
+.cycle button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: #cbd5f5;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cycle button:hover {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.cycle button.active {
+  background: #6366f1;
+  color: white;
+}
+@media (max-width: 768px) {
+  .app-header {
+    height: auto;
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .controls {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .property {
+    width: 100%;
+  }
+
+  .cycle {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .cycle button {
+    flex: 1;
+    text-align: center;
+  }
+}
