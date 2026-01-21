@@ -1,71 +1,108 @@
-<h2>Add Transaction</h2>
+<div class="transactions-page">
+  <!-- ADD TRANSACTION SECTION -->
+  <div class="section">
+    <div class="section-header">
+      <h2>➕ Add New Transaction</h2>
+      <p class="section-subtitle">Record income or expense for your properties</p>
+    </div>
 
-<div class="form">
+    <div class="form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Type</label>
+          <select [(ngModel)]="type" class="type-select">
+            <option value="income">💚 Income</option>
+            <option value="expense">❤️ Expense</option>
+          </select>
+        </div>
 
-  <select [(ngModel)]="type">
-    <option value="income">Income</option>
-    <option value="expense">Expense</option>
-  </select>
+        <div class="form-group" *ngIf="propertyStore.propertyId() === 0">
+          <label>Property</label>
+          <select
+            [ngModel]="selectedPropertyId()"
+            (ngModelChange)="selectedPropertyId.set($event)">
+            <option [ngValue]="0" disabled>Select Property</option>
+            <option [ngValue]="1">🏡 Earthy Escape</option>
+            <option [ngValue]="2">🌾 Millennium Farm</option>
+          </select>
+        </div>
+      </div>
 
-  <!-- ✅ SHOW PROPERTY DROPDOWN ONLY FOR "ALL PROPERTIES" -->
-  <select
-    *ngIf="propertyStore.propertyId() === 0"
-    [ngModel]="selectedPropertyId()"
-    (ngModelChange)="selectedPropertyId.set($event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Category</label>
+          <input
+            type="text"
+            placeholder="e.g., Bookings, Salary, Utilities"
+            [(ngModel)]="category" />
+        </div>
 
-    <option [ngValue]="0" disabled>Select Property</option>
-    <option [ngValue]="1">Earthy Escape</option>
-    <option [ngValue]="2">Millennium Farm</option>
-  </select>
+        <div class="form-group">
+          <label>Amount (₹)</label>
+          <input
+            type="number"
+            placeholder="0"
+            [(ngModel)]="amount" />
+        </div>
+      </div>
 
-  <input
-    type="text"
-    placeholder="Category"
-    [(ngModel)]="category" />
+      <div class="form-group">
+        <label>Date</label>
+        <input
+          type="date"
+          [(ngModel)]="date" />
+      </div>
 
-  <input
-    type="number"
-    placeholder="Amount"
-    [(ngModel)]="amount" />
+      <button class="btn-primary" (click)="add()">Add Transaction</button>
+    </div>
+  </div>
 
-  <input
-    type="date"
-    [(ngModel)]="date" />
+  <!-- TRANSACTIONS LIST SECTION -->
+  <div class="section">
+    <div class="section-header">
+      <h2>📋 Transaction History</h2>
+      <p class="section-subtitle">All recorded transactions</p>
+    </div>
 
-  <button (click)="add()">Add</button>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Property</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of transactions()" [class.income-row]="t.type === 'income'" [class.expense-row]="t.type === 'expense'">
+            <td>
+              <span class="badge" [ngClass]="t.type === 'income' ? 'badge-success' : 'badge-danger'">
+                {{ t.type === 'income' ? '💚 Income' : '❤️ Expense' }}
+              </span>
+            </td>
+            <td>
+              <span class="property-badge">
+                {{ t.propertyId === 1 ? '🏡 Earthy Escape' : '🌾 Millennium Farm' }}
+              </span>
+            </td>
+            <td>{{ t.category }}</td>
+            <td>
+              <span class="amount" [ngClass]="t.type === 'income' ? 'income-amount' : 'expense-amount'">
+                {{ t.type === 'income' ? '+' : '-' }} ₹{{ t.amount }}
+              </span>
+            </td>
+            <td>{{ t.date }}</td>
+            <td>
+              <button class="btn-delete" *ngIf="t.id !== undefined" (click)="remove(t.id)" title="Delete transaction">
+                ✕
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<h2>Transactions</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Property</th>
-      <th>Category</th>
-      <th>Amount</th>
-      <th>Date</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let t of transactions()">
-      <td>{{ t.type }}</td>
-      <td>
-        {{ t.propertyId === 1 ? 'Earthy Escape' : 'Millennium Farm' }}
-      </td>
-      <td>{{ t.category }}</td>
-      <td>₹{{ t.amount }}</td>
-      <td>{{ t.date }}</td>
-      <td>
-        <button
-  *ngIf="t.id !== undefined"
-  (click)="remove(t.id)">
-  ✕
-</button>
-
-      </td>
-    </tr>
-  </tbody>
-</table>

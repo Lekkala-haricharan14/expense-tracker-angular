@@ -1,82 +1,113 @@
-<h1>Financial Reports</h1>
-<p class="subtitle">Detailed analysis & comparisons</p>
+<div class="reports-page">
+  <div class="reports-header">
+    <h1>📊 Financial Reports</h1>
+    <p class="subtitle">Deep dive into your financial performance</p>
+  </div>
 
-<!-- ========================= -->
-<!-- PROPERTY COMPARISON -->
-<!-- ========================= -->
-<section>
-  <h3>Property Comparison</h3>
+  <!-- PROPERTY COMPARISON -->
+  <div class="report-section">
+    <div class="section-header">
+      <h3>🏢 Property Comparison</h3>
+      <p>Side-by-side analysis of your properties</p>
+    </div>
 
-  <table>
-    <tr>
-      <th>Property</th>
-      <th>Income</th>
-      <th>Expenses</th>
-      <th>Profit</th>
-    </tr>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Income</th>
+            <th>Expenses</th>
+            <th>Profit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="property-name">🏡 Earthy Escape</span></td>
+            <td><span class="amount income">₹{{ propertySummary().earthy.income }}</span></td>
+            <td><span class="amount expense">₹{{ propertySummary().earthy.expense }}</span></td>
+            <td>
+              <span class="amount profit">
+                ₹{{ propertySummary().earthy.income - propertySummary().earthy.expense }}
+              </span>
+            </td>
+          </tr>
 
-    <tr>
-      <td>Earthy Escape</td>
-      <td>₹{{ propertySummary().earthy.income }}</td>
-      <td>₹{{ propertySummary().earthy.expense }}</td>
-      <td>
-        ₹{{ propertySummary().earthy.income - propertySummary().earthy.expense }}
-      </td>
-    </tr>
+          <tr>
+            <td><span class="property-name">🌾 Millennium Farm</span></td>
+            <td><span class="amount income">₹{{ propertySummary().millennium.income }}</span></td>
+            <td><span class="amount expense">₹{{ propertySummary().millennium.expense }}</span></td>
+            <td>
+              <span class="amount profit">
+                ₹{{ propertySummary().millennium.income - propertySummary().millennium.expense }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    <tr>
-      <td>Millennium Farm</td>
-      <td>₹{{ propertySummary().millennium.income }}</td>
-      <td>₹{{ propertySummary().millennium.expense }}</td>
-      <td>
-        ₹{{ propertySummary().millennium.income - propertySummary().millennium.expense }}
-      </td>
-    </tr>
-  </table>
-</section>
+  <!-- EXPENSE BY CATEGORY -->
+  <div class="report-section">
+    <div class="section-header">
+      <h3>❤️ Expenses by Category</h3>
+      <p>Where your money is going</p>
+    </div>
 
-<!-- ========================= -->
-<!-- CATEGORY-WISE EXPENSE -->
-<!-- ========================= -->
-<section>
-  <h3>Expense by Category</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Total Expense</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of expenseByCategory()">
+            <td>{{ c[0] }}</td>
+            <td><span class="amount expense">₹{{ c[1] }}</span></td>
+          </tr>
+          <tr *ngIf="expenseByCategory().length === 0" class="empty-row">
+            <td colspan="2">No expenses recorded</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <table>
-    <tr>
-      <th>Category</th>
-      <th>Total Expense</th>
-    </tr>
+  <!-- INCOME BY CATEGORY -->
+  <div class="report-section">
+    <div class="section-header">
+      <h3>💚 Income by Category</h3>
+      <p>Your revenue streams</p>
+    </div>
 
-    <tr *ngFor="let c of expenseByCategory()">
-      <td>{{ c[0] }}</td>
-      <td>₹{{ c[1] }}</td>
-    </tr>
-  </table>
-</section>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Total Income</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of incomeByCategory()">
+            <td>{{ c[0] }}</td>
+            <td><span class="amount income">₹{{ c[1] }}</span></td>
+          </tr>
+          <tr *ngIf="incomeByCategory().length === 0" class="empty-row">
+            <td colspan="2">No income recorded</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-
-<!-- ========================= -->
-<!-- INCOME BY CATEGORY -->
-<!-- ========================= -->
-<section>
-  <h3>Income by Category</h3>
-
-  <table>
-    <tr>
-      <th>Category</th>
-      <th>Total Income</th>
-    </tr>
-
-    <tr *ngFor="let c of incomeByCategory()">
-      <td>{{ c[0] }}</td>
-      <td>₹{{ c[1] }}</td>
-    </tr>
-  </table>
-</section>
-
-<!-- ========================= -->
-<!-- EXPORT -->
-<!-- ========================= -->
-<button class="export" (click)="exportCSV()">
-  Export CSV
-</button>
+  <!-- EXPORT SECTION -->
+  <div class="export-section">
+    <button class="btn-export" (click)="exportCSV()">
+      📥 Export CSV Report
+    </button>
+  </div>
+</div>

@@ -1,6 +1,32 @@
-<div class="cards">
-  <div>Total Income <b>{{ dashboard.income() }}</b></div>
-  <div>Total Expenses <b>{{ dashboard.expenses() }}</b></div>
-  <div>Net Profit <b>{{ dashboard.profit() }}</b></div>
-  <div>Margin <b>{{ dashboard.margin() }}%</b></div>
+<div class="dashboard">
+  <div class="dashboard-header">
+    <h1>Financial Overview</h1>
+    <p class="subtitle">Track your property performance at a glance</p>
+  </div>
+
+  <div class="cards">
+    <div class="card income">
+      <div class="card-icon">📈</div>
+      <div class="card-label">Total Income</div>
+      <div class="card-value">₹{{ dashboard.income() }}</div>
+    </div>
+    
+    <div class="card expense">
+      <div class="card-icon">📉</div>
+      <div class="card-label">Total Expenses</div>
+      <div class="card-value">₹{{ dashboard.expenses() }}</div>
+    </div>
+    
+    <div class="card profit">
+      <div class="card-icon">💰</div>
+      <div class="card-label">Net Profit</div>
+      <div class="card-value">₹{{ dashboard.profit() }}</div>
+    </div>
+    
+    <div class="card margin">
+      <div class="card-icon">📊</div>
+      <div class="card-label">Profit Margin</div>
+      <div class="card-value">{{ dashboard.margin() }}%</div>
+    </div>
+  </div>
 </div>

@@ -56,15 +56,6 @@
       "description": "Instagram ads"
     },
     {
-      "id": "7",
-      "propertyId": 2,
-      "type": "income",
-      "category": "Events",
-      "amount": 6000,
-      "date": "2026-01-18",
-      "description": "Corporate event"
-    },
-    {
       "id": "8",
       "propertyId": 2,
       "type": "expense",
